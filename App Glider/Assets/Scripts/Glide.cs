@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class Glide : MonoBehaviour
