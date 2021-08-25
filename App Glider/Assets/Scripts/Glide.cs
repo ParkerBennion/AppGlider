@@ -9,9 +9,7 @@ using UnityEngine.UI;
 
 public class Glide : MonoBehaviour
 {
-    
-    PlayerControlls controls;
-    SecondaryControls secondary;
+   // deleted player condrolls!!!!!
     
     private Rigidbody gliderBody;
     
@@ -70,26 +68,7 @@ public class Glide : MonoBehaviour
     
     private void Awake()
     {
-        controls = new PlayerControlls();
-        secondary = new SecondaryControls();
-        //controls.GamePlay.roll.performed += ctx => Grow();
-        
-        controls.gamePlay.rollRight.performed += ctx => rollrights = ctx.ReadValue<float>();
-        controls.gamePlay.rollLeft.performed += ctx => rolllefts = ctx.ReadValue<float>();
-        controls.gamePlay.booster.performed += ctx => BoostUp();
-        controls.gamePlay.booster.canceled += ctx => BoostActivate();
-        controls.gamePlay.brake.performed += ctx => BoostDown();
-        controls.gamePlay.brake.canceled += ctx => BoostDownActivate();
-        // sets up triggers and bumpers
-
-        secondary.faceButtons.BHold.performed += ctx => VerticalTakeoff();
-        secondary.faceButtons.BHold.canceled += ctx => VerticalTakeoffCancel();
-        secondary.faceButtons.Ddown.performed += ctx => AirBrake();
-        secondary.faceButtons.Ddown.canceled += ctx => AirBrakeOff();
-        secondary.faceButtons.Abutton.performed += ctx => Modifier();
-        //secondary.faceButtons.Bbutton.performed += ctx => ;
-        //secondary.faceButtons.Bbutton.canceled += ctx =>;
-        // sets up D-Pad and face buttons.
+        //control interface deleted here !!!!!!!
 
         gliderBody = GetComponent<Rigidbody>();
         //used to add force
@@ -404,15 +383,5 @@ public class Glide : MonoBehaviour
     // this ignores the fact that you may have boosters off and should be returning to an enging delta of =.2f.. I need to save current settings in a cache so they can be toggled easier. // could i just use the boostmode switch?
 
     
-    private void OnEnable()
-    {
-        secondary.faceButtons.Enable();
-        controls.gamePlay.Enable();
-    }
-    private void OnDisable()
-    {
-        secondary.faceButtons.Disable();
-        controls.gamePlay.Disable();
-    }
-    //to enable and disable gamepad;
+    //gamepad was activated here !!!!!!!
 }
