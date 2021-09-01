@@ -73,6 +73,5 @@ public class Diognostics : MonoBehaviour
             yield return resetter;
         }
 
-        
     }
 }
