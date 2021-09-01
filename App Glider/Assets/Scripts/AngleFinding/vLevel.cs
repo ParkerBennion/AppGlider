@@ -11,7 +11,7 @@ public class vLevel : MonoBehaviour
     {
         Vector3 relativePos = targetTwo.position - transform.position;
         transform.rotation = Quaternion.LookRotation(relativePos);
-
+        
     }
 
     private void FixedUpdate()

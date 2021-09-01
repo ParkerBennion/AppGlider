@@ -63,8 +63,7 @@ public class Glide : MonoBehaviour
     // bool variables
     
     public static string gear = "none";
-    
-    
+
     private void Awake()
     {
         //control interface deleted here !!!!!!!
@@ -133,6 +132,12 @@ public class Glide : MonoBehaviour
             momentum = -9;
         }*/
         //adds extra speed dependant on accel test numbers.
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            BoostUp();
+        }
+        //start here.......................................................................... you cant boost up because your 
+        // lift isnt at 50% this needs to be changed.
     }
 
 
