@@ -136,6 +136,11 @@ public class Glide : MonoBehaviour
         {
             BoostUp();
         }
+
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            BoostActivate();
+        }
         //start here.......................................................................... you cant boost up because your 
         // lift isnt at 50% this needs to be changed.
     }
@@ -257,7 +262,7 @@ public class Glide : MonoBehaviour
             transform.Translate(Vector3.forward * (power * Time.deltaTime));// rail like movement
             gliderBody.AddForce(transform.forward * (thrustTotal * Time.deltaTime)); // vector type movement
 
-            transform.Rotate(Time.deltaTime * 100 * Vector3.right);//constant dive
+            //transform.Rotate(Time.deltaTime * 100 * Vector3.right);//constant dive
 
             transform.Rotate(Vector3.left * (rollrights * 100 * Time.deltaTime));// pitch right
             transform.Rotate(Vector3.back * (rollrights * 70 * Time.deltaTime)); // lift
@@ -290,7 +295,8 @@ public class Glide : MonoBehaviour
     
     void BoostUp()
     {
-        if (!activeAirplane && rollrights  >= .4f)
+        //if (!activeAirplane && rollrights  >= .4f)
+        if (!activeAirplane)
         {
             activeAirplane = true;
             engineOn = true;
@@ -333,7 +339,8 @@ public class Glide : MonoBehaviour
 
     void VerticalTakeoff()
     {
-        if (rollrights  >= .4f && !activeAirplane)
+        //if (rollrights  >= .4f && !activeAirplane)
+        if (!activeAirplane)
         {
             grav = 2;
             gliderBody.velocity = Time.deltaTime * 2500 * transform.up;
