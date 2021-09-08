@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEditor;
@@ -112,7 +111,8 @@ public class Glide : MonoBehaviour
     
     private void Update()
     {
-        gravAngle = Math.Abs(vQuatFinder.verticalGoldenAngle * .08f);
+        //this might be "math"
+        gravAngle = Mathf.Abs(vQuatFinder.verticalGoldenAngle * .08f);
         rotAngle = hQuatFinder.horozontalGoldenAngle * .2f;
         
         //adds gravity to the craft at high angles.
@@ -223,6 +223,7 @@ public class Glide : MonoBehaviour
     }
     //finds the velocity of the player
     //DO NOT TURN OFF IS PLAYING WHILE BEING USED
+    //github.com/anthony romerell 2021 classs repository for SO references.
 
     IEnumerator FindMomentum()
     {
