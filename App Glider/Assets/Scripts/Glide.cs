@@ -223,7 +223,7 @@ public class Glide : MonoBehaviour
     }
     //finds the velocity of the player
     //DO NOT TURN OFF IS PLAYING WHILE BEING USED
-    //github.com/anthony romerell 2021 classs repository for SO references.
+    //github.com/anthony romerell 2021 classs repository for SO references. 
 
     IEnumerator FindMomentum()
     {
