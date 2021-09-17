@@ -1,7 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -58,6 +55,8 @@ public class Glide : MonoBehaviour
     private static bool brakeActive = false;
     public static bool engineOn;
     private static bool activeAirplane;
+
+    public Button goButton;
     
     // bool variables
     
@@ -78,7 +77,6 @@ public class Glide : MonoBehaviour
         engineOn = false;
         activeAirplane = false;
         isFindingMomentum = true;
-        
         enginePower = 0;
         momentum = 0;
     }
@@ -123,6 +121,9 @@ public class Glide : MonoBehaviour
         // used as reference in other scripts that need the orientation of the player.
         
         momentum = AccelTester.currStrength*-1;
+
+        //rolllefts = Diognostics.rightTrigger.value;
+        // = Diognostics.leftTrigger.value;
         /*if (momentum > 9)
         {
             momentum = 9;
@@ -135,6 +136,13 @@ public class Glide : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             BoostUp();
+        }
+
+        if (goButton)
+        {
+            BoostUp();
+            BoostActivate();
+            Debug.Log("hit");
         }
 
         if (Input.GetKeyUp(KeyCode.W))
@@ -263,15 +271,15 @@ public class Glide : MonoBehaviour
             transform.Translate(Vector3.forward * (power * Time.deltaTime));// rail like movement
             gliderBody.AddForce(transform.forward * (thrustTotal * Time.deltaTime)); // vector type movement
 
-            //transform.Rotate(Time.deltaTime * 100 * Vector3.right);//constant dive
+            transform.Rotate(Time.deltaTime * 100 * Vector3.right);//constant dive
 
-            transform.Rotate(Vector3.left * (rollrights * 100 * Time.deltaTime));// pitch right
-            transform.Rotate(Vector3.back * (rollrights * 70 * Time.deltaTime)); // lift
+            transform.Rotate(Vector3.left * (rolllefts * 100 * Time.deltaTime));// pitch right
+            transform.Rotate(Vector3.back * (rolllefts * 70 * Time.deltaTime)); // lift
         
-            transform.Rotate(Vector3.left * (rolllefts * 100 * Time.deltaTime)); //pitch left
-            transform.Rotate(Vector3.forward * (rolllefts * 70 * Time.deltaTime)); //lift
+            transform.Rotate(Vector3.left * (rollrights * 100 * Time.deltaTime)); //pitch left
+            transform.Rotate(Vector3.forward * (rollrights * 70 * Time.deltaTime)); //lift
 
-            transform.Rotate(Vector3.up * (rotAngle * Time.deltaTime)); //rotate (Yaw)
+            //transform.Rotate(Vector3.up * (rotAngle * Time.deltaTime)); //rotate (Yaw)
 
             yield return new WaitForFixedUpdate();
         }
