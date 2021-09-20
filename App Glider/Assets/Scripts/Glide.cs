@@ -224,8 +224,7 @@ public class Glide : MonoBehaviour
                 
                 StartCoroutine(FullReset()); 
                 yield return new WaitForSecondsRealtime(3);
-                
-                
+
             }
         }
     }
