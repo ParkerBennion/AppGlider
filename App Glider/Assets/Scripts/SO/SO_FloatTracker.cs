@@ -5,7 +5,7 @@ public class SO_FloatTracker : ScriptableObject
 {
     public int nextPoint;
 
-    void Checkpoint(int pointNum)
+    public void Checkpoint(int pointNum)
     {
         nextPoint += pointNum;
     }

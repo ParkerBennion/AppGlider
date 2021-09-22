@@ -64,13 +64,11 @@ public class Glide : MonoBehaviour
 
     private void Awake()
     {
-        //control interface deleted here !!!!!!!
-
         gliderBody = GetComponent<Rigidbody>();
-        //used to add force
         
         GetComponent<Rigidbody>().drag = .7f;
         GetComponent<Rigidbody>().angularDrag = 1;
+        
         currentBoost = -1;
         
         isPlaying = true;
@@ -114,10 +112,11 @@ public class Glide : MonoBehaviour
         rotAngle = hQuatFinder.horozontalGoldenAngle * .2f;
         
         //adds gravity to the craft at high angles.
-        currentAngle = transform.eulerAngles;
+        var transform1 = transform;
+        currentAngle = transform1.eulerAngles;
         
-        craftPos = transform.position;
-        craftRot = transform.rotation;
+        craftPos = transform1.position;
+        craftRot = transform1.rotation;
         // used as reference in other scripts that need the orientation of the player.
         
         momentum = AccelTester.currStrength*-1;
@@ -215,9 +214,13 @@ public class Glide : MonoBehaviour
         
         while (isPlaying)
         {
-            Vector3 prevPos = transform.position;
+            //ridervariabler
+            var position = transform.position;
+            //ridervariabler
+            Vector3 prevPos = position;
             yield return new WaitForFixedUpdate();
-            currentSpeed = Mathf.RoundToInt(Vector3.Distance(transform.position, prevPos) / Time.fixedDeltaTime);
+            currentSpeed = Mathf.RoundToInt(Vector3.Distance(position, prevPos) / Time.fixedDeltaTime);
+            //ridervariabler
 
             if (currentSpeed <=0 && gear =="OFF")
             {
@@ -267,8 +270,9 @@ public class Glide : MonoBehaviour
     {
         while (activeAirplane)
         {
-            transform.Translate(Vector3.forward * (power * Time.deltaTime));// rail like movement
-            gliderBody.AddForce(transform.forward * (thrustTotal * Time.deltaTime)); // vector type movement
+            Transform transform1;
+            (transform1 = transform).Translate(Vector3.forward * (power * Time.deltaTime));// rail like movement
+            gliderBody.AddForce(transform1.forward * (thrustTotal * Time.deltaTime)); // vector type movement
 
             transform.Rotate(Time.deltaTime * 100 * Vector3.right);//constant dive
 
@@ -317,10 +321,6 @@ public class Glide : MonoBehaviour
         {
             currentBoost++;
         }
-        else
-        {
-            return; // play audio here
-        }
     }
     // switches between motor functions. delays and animations would be cool to add to these
     
@@ -355,7 +355,9 @@ public class Glide : MonoBehaviour
             stage2 = true;
             activeAirplane = true;
             StartCoroutine(AirplaneActive());
-            Instantiate(takeoffSprite, transform.position, transform.rotation);
+            var transform1 = transform;
+            //ridervariabler
+            Instantiate(takeoffSprite, transform1.position, transform1.rotation);
             //takeoffSprite.SetActive(true);   outdated
         }
         // vertical takeoff needs to compare to rolllefts..... also make the colorbars change for vertical takeoff...... go over the profiler again to see whats up.
