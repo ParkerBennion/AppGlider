@@ -25,6 +25,9 @@ public class Diognostics : MonoBehaviour
     public Text fifteen;
     public Text sixteen;
     public Text seventeen;
+    public Text eighteen;
+    public float soTestingFloat = 0;
+
 
     public GameObject staller;
     public GameObject resetter;
@@ -59,7 +62,7 @@ public class Diognostics : MonoBehaviour
         sixteen.text = AccelTester.recoveryRate.ToString("0" + "recoveryRate");
         seventeen.text = Glide.momentumApplied.ToString("0" + "MomentumApplied");
         
-        //rightTrigger.value = Glide.rollrights; 
+            //rightTrigger.value = Glide.rollrights; 
         //leftTrigger.value = Glide.rolllefts;
 
         Glide.rolllefts = leftTrigger.value;
@@ -67,6 +70,7 @@ public class Diognostics : MonoBehaviour
 
 
     }
+    
 
     IEnumerator Warnings()
     {

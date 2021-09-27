@@ -27,6 +27,8 @@ public class Glide : MonoBehaviour
     public static float rotAngle;
     private static float grav = 13f;
     private static int boostMode;
+
+    
     // do not toutch
     
     public static float enginePower;
@@ -214,13 +216,10 @@ public class Glide : MonoBehaviour
         
         while (isPlaying)
         {
-            //ridervariabler
             var position = transform.position;
-            //ridervariabler
             Vector3 prevPos = position;
             yield return new WaitForFixedUpdate();
             currentSpeed = Mathf.RoundToInt(Vector3.Distance(position, prevPos) / Time.fixedDeltaTime);
-            //ridervariabler
 
             if (currentSpeed <=0 && gear =="OFF")
             {
