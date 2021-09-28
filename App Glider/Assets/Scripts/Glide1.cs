@@ -1,11 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Glide : MonoBehaviour
+public class Glide1 : MonoBehaviour
 {
-   // deleted player condrolls!!!!!
-    
+
     private Rigidbody gliderBody;
     
     public static Vector3 currentAngle;
@@ -53,23 +52,25 @@ public class Glide : MonoBehaviour
     private bool isFindingMomentum;
     public static bool engineOn;
     private static bool activeAirplane;
-
-    public Button goButton;
     
     // bool variables
     
     public static string gear = "none";
-
+    
+    
     private void Awake()
     {
         gliderBody = GetComponent<Rigidbody>();
         GetComponent<Rigidbody>().drag = .7f;
         GetComponent<Rigidbody>().angularDrag = 1;
-        currentBoost = 0;
+        
+        currentBoost = -1;
+        
         isPlaying = true;
-        engineOn = true;
-        activeAirplane = true;
+        engineOn = false;
+        activeAirplane = false;
         isFindingMomentum = true;
+        
         enginePower = 0;
         momentum = 0;
     }
@@ -83,7 +84,6 @@ public class Glide : MonoBehaviour
         vertSensor.SetActive(true);
         horoSensor.SetActive(true);
         Boost();
-        StartCoroutine(AirplaneActive());
         //sets the angle finding objects in the scene.
     }
     
@@ -103,19 +103,26 @@ public class Glide : MonoBehaviour
     
     private void Update()
     {
-        //this might be "math"
-        gravAngle = Mathf.Abs(vQuatFinder.verticalGoldenAngle * .08f);
+        gravAngle = Math.Abs(vQuatFinder.verticalGoldenAngle * .08f);
         rotAngle = hQuatFinder.horozontalGoldenAngle * .2f;
         
         //adds gravity to the craft at high angles.
-        var transform1 = transform;
-        currentAngle = transform1.eulerAngles;
+        currentAngle = transform.eulerAngles;
         
-        craftPos = transform1.position;
-        craftRot = transform1.rotation;
+        craftPos = transform.position;
+        craftRot = transform.rotation;
         // used as reference in other scripts that need the orientation of the player.
         
         momentum = AccelTester.currStrength*-1;
+        /*if (momentum > 9)
+        {
+            momentum = 9;
+        }
+        else if (momentum < -9)
+        {
+            momentum = -9;
+        }*/
+        //adds extra speed dependant on accel test numbers.
     }
 
 
@@ -151,13 +158,12 @@ public class Glide : MonoBehaviour
                 break;
             
             case 1 :
-                Modifier();
                 thrust = 600;
                 engineTarget = 15;
-                engineOn = true;
                 gear = "BOOST";
                 Modifier();
                 break;
+            
         }
     }
     //  control over the flying state. this can be made into template for other gliders. also needs variables for ease of changing the numbers in case of status effects.
@@ -173,10 +179,13 @@ public class Glide : MonoBehaviour
             yield return new WaitForFixedUpdate();
             currentSpeed = Mathf.RoundToInt(Vector3.Distance(transform.position, prevPos) / Time.fixedDeltaTime);
         }
+        /*var position = transform.position;
+            Vector3 prevPos = position;
+            yield return new WaitForFixedUpdate();
+            currentSpeed = Mathf.RoundToInt(Vector3.Distance(position, prevPos) / Time.fixedDeltaTime);*/
     }
     //finds the velocity of the player
     //DO NOT TURN OFF IS PLAYING WHILE BEING USED
-    //github.com/anthony romerell 2021 classs repository for SO references. 
 
     IEnumerator FindMomentum()
     {
@@ -186,6 +195,15 @@ public class Glide : MonoBehaviour
 
             momentumApplied = Mathf.MoveTowards(momentumApplied, AccelTester.maxStrength*-1,
                 Mathf.Abs(momentum/2) * Time.deltaTime);
+            
+            
+            /*enginePower = (engineOn) ? Mathf.MoveTowards(enginePower, 15, engineDelta * Time.deltaTime) 
+                : enginePower = Mathf.MoveTowards(enginePower, 15, -.2f * Time.deltaTime);*/
+            
+            if (enginePower<0)
+            {
+                enginePower = 0;
+            }
 
             power = enginePower + momentumApplied;
 
@@ -204,19 +222,18 @@ public class Glide : MonoBehaviour
     {
         while (activeAirplane)
         {
-            Transform transform1;
-            (transform1 = transform).Translate(Vector3.forward * (power * Time.deltaTime));// rail like movement
-            gliderBody.AddForce(transform1.forward * (thrustTotal * Time.deltaTime)); // vector type movement
+            transform.Translate(Vector3.forward * (power * Time.deltaTime));// rail like movement
+            gliderBody.AddForce(transform.forward * (thrustTotal * Time.deltaTime)); // vector type movement
 
             transform.Rotate(Time.deltaTime * 100 * Vector3.right);//constant dive
 
-            transform.Rotate(Vector3.left * (rolllefts * 100 * Time.deltaTime));// pitch right
-            transform.Rotate(Vector3.back * (rolllefts * 70 * Time.deltaTime)); // lift
+            transform.Rotate(Vector3.left * (rollrights * 100 * Time.deltaTime));// pitch right
+            transform.Rotate(Vector3.back * (rollrights * 70 * Time.deltaTime)); // lift
         
-            transform.Rotate(Vector3.left * (rollrights * 100 * Time.deltaTime)); //pitch left
-            transform.Rotate(Vector3.forward * (rollrights * 70 * Time.deltaTime)); //lift
+            transform.Rotate(Vector3.left * (rolllefts * 100 * Time.deltaTime)); //pitch left
+            transform.Rotate(Vector3.forward * (rolllefts * 70 * Time.deltaTime)); //lift
 
-            //transform.Rotate(Vector3.up * (rotAngle * Time.deltaTime)); //rotate (Yaw)
+            transform.Rotate(Vector3.up * (rotAngle * Time.deltaTime)); //rotate (Yaw)
 
             yield return new WaitForFixedUpdate();
         }
@@ -241,8 +258,7 @@ public class Glide : MonoBehaviour
     
     void BoostUp()
     {
-        //if (!activeAirplane && rollrights  >= .4f)
-        if (!activeAirplane)
+        if (!activeAirplane && rollrights  >= .4f)
         {
             activeAirplane = true;
             engineOn = true;
@@ -254,6 +270,10 @@ public class Glide : MonoBehaviour
         else if (currentBoost<1 && activeAirplane)
         {
             currentBoost++;
+        }
+        else
+        {
+            return; // play audio here
         }
     }
     // switches between motor functions. delays and animations would be cool to add to these
@@ -275,6 +295,6 @@ public class Glide : MonoBehaviour
     }
     void BoostDownActivate()
     {
-        Boost();
+        Boost(); 
     }
 }
