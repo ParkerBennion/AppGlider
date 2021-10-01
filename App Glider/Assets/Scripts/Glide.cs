@@ -17,6 +17,9 @@ public class Glide : MonoBehaviour
 
     public GameObject vertSensor;
     public GameObject horoSensor;
+
+    public ScriptableObject getThatSexySOVariable;
+    public float herIsThatSexyVariableForYa;
     
     public static float power = 13;
     public static float rollrights;
@@ -44,7 +47,7 @@ public class Glide : MonoBehaviour
     
     // in progress.
     public static float thrust = 0;
-    public static float thrustMod = 100;
+    public static float thrustMod = 700;
     public static float thrustTotal;
     // variables
 
@@ -53,6 +56,7 @@ public class Glide : MonoBehaviour
     private bool isFindingMomentum;
     public static bool engineOn;
     private static bool activeAirplane;
+    public float Turning = 2;
 
     public Button goButton;
     
@@ -193,7 +197,6 @@ public class Glide : MonoBehaviour
             {
                 power = 0;
             }
-            // is this ^^^ inefficient
             yield return power;
         }
         //ENGINE POWER, ENGINE TARGET, ENGINE DELTA, MOMENTUM APPLIED, IS FINDING MOMENTUM.
@@ -216,7 +219,7 @@ public class Glide : MonoBehaviour
             transform.Rotate(Vector3.left * (rollrights * 100 * Time.deltaTime)); //pitch left
             transform.Rotate(Vector3.forward * (rollrights * 70 * Time.deltaTime)); //lift
 
-            //transform.Rotate(Vector3.up * (rotAngle * Time.deltaTime)); //rotate (Yaw)
+            transform.Rotate(Vector3.up * (rotAngle* Turning * Time.deltaTime)); //rotate (Yaw)
 
             yield return new WaitForFixedUpdate();
         }

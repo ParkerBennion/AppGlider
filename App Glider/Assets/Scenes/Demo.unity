@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.114391156, g: 0.1912868, b: 0.23285908, a: 1}
+  m_IndirectSpecularColor: {r: 0.11435775, g: 0.19130969, b: 0.23285097, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -232,7 +232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &112574398
 Light:
   m_ObjectHideFlags: 0
@@ -309,15 +309,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 30, y: -90, z: 0}
---- !u!1 &329503871 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7225516240909628606, guid: d1766d7ef328091489851081e5a45d1c, type: 3}
-  m_PrefabInstance: {fileID: 1136665763}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &329503875 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7225516240909628605, guid: d1766d7ef328091489851081e5a45d1c, type: 3}
   m_PrefabInstance: {fileID: 1136665763}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &334318825 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2319188741334136410, guid: a5f81981729dcdc489d09062eb18f74e, type: 3}
+  m_PrefabInstance: {fileID: 505065363}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &505065363
 PrefabInstance:
@@ -326,6 +326,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2319188741334136408, guid: a5f81981729dcdc489d09062eb18f74e, type: 3}
+      propertyPath: targetTwo
+      value: 
+      objectReference: {fileID: 1772180683}
     - target: {fileID: 2319188741334136409, guid: a5f81981729dcdc489d09062eb18f74e, type: 3}
       propertyPath: targetBlue
       value: 
@@ -340,7 +344,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2319188741334136413, guid: a5f81981729dcdc489d09062eb18f74e, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2319188741334136413, guid: a5f81981729dcdc489d09062eb18f74e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -400,7 +404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &645387097
 Light:
   m_ObjectHideFlags: 0
@@ -486,7 +490,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6903721738500623060, guid: 8d1d39c7f7a1b584e8925f1da1b5e454, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6903721738500623060, guid: 8d1d39c7f7a1b584e8925f1da1b5e454, type: 3}
       propertyPath: m_LocalPosition.x
@@ -536,6 +540,10 @@ PrefabInstance:
       propertyPath: altitudeGreen
       value: 
       objectReference: {fileID: 329503875}
+    - target: {fileID: 6903721738500623065, guid: 8d1d39c7f7a1b584e8925f1da1b5e454, type: 3}
+      propertyPath: targetTwo
+      value: 
+      objectReference: {fileID: 1772180683}
     - target: {fileID: 6903721738500623067, guid: 8d1d39c7f7a1b584e8925f1da1b5e454, type: 3}
       propertyPath: m_Name
       value: Orange
@@ -559,7 +567,7 @@ PrefabInstance:
       objectReference: {fileID: 1336815037}
     - target: {fileID: 7225516240909628605, guid: d1766d7ef328091489851081e5a45d1c, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7225516240909628605, guid: d1766d7ef328091489851081e5a45d1c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -607,11 +615,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1766d7ef328091489851081e5a45d1c, type: 3}
---- !u!1 &1160531852 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8044796318787039554, guid: bf8f23da66910974da561235fc2ed3aa, type: 3}
-  m_PrefabInstance: {fileID: 1440132734}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1160531856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8044796318787039555, guid: bf8f23da66910974da561235fc2ed3aa, type: 3}
@@ -779,7 +782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 926198075343759634, guid: 9ab1649bbca4d1e44ad054245d7ca1fb, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 926198075343759634, guid: 9ab1649bbca4d1e44ad054245d7ca1fb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -824,11 +827,15 @@ PrefabInstance:
     - target: {fileID: 926198075343759724, guid: 9ab1649bbca4d1e44ad054245d7ca1fb, type: 3}
       propertyPath: horoSensor
       value: 
-      objectReference: {fileID: 329503871}
+      objectReference: {fileID: 1830002616}
     - target: {fileID: 926198075343759724, guid: 9ab1649bbca4d1e44ad054245d7ca1fb, type: 3}
       propertyPath: vertSensor
       value: 
-      objectReference: {fileID: 1160531852}
+      objectReference: {fileID: 334318825}
+    - target: {fileID: 926198075343759724, guid: 9ab1649bbca4d1e44ad054245d7ca1fb, type: 3}
+      propertyPath: getThatSexySOVariable
+      value: 
+      objectReference: {fileID: 11400000, guid: 81378ae897f80ad48aed3005a0fa376a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ab1649bbca4d1e44ad054245d7ca1fb, type: 3}
 --- !u!4 &1336815037 stripped
@@ -1192,7 +1199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8044796318787039555, guid: bf8f23da66910974da561235fc2ed3aa, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8044796318787039555, guid: bf8f23da66910974da561235fc2ed3aa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1333,6 +1340,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 926198075405977723, guid: 9ab1649bbca4d1e44ad054245d7ca1fb, type: 3}
   m_PrefabInstance: {fileID: 1276732189}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1830002616 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6903721738500623067, guid: 8d1d39c7f7a1b584e8925f1da1b5e454, type: 3}
+  m_PrefabInstance: {fileID: 767542607}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1850308611 stripped
 Transform:
