@@ -18,8 +18,7 @@ public class Glide : MonoBehaviour
     public GameObject vertSensor;
     public GameObject horoSensor;
 
-    public ScriptableObject getThatSexySOVariable;
-    public float herIsThatSexyVariableForYa;
+    public SO_PlaneStats CurrentStatus;
     
     public static float power = 13;
     public static float rollrights;
@@ -76,6 +75,7 @@ public class Glide : MonoBehaviour
         isFindingMomentum = true;
         enginePower = 0;
         momentum = 0;
+        thrust = CurrentStatus.thrust;
     }
     
     
@@ -138,7 +138,7 @@ public class Glide : MonoBehaviour
         switch (boostMode)
         {
             case -1 :
-                thrust = 0;
+                thrustMod = 0;
                 engineTarget = 15;
                 engineOn = false;
                 gear = "OFF";
@@ -146,7 +146,7 @@ public class Glide : MonoBehaviour
                 break;
             
             case 0 :
-                thrust = 0;
+                thrustMod = 0;
                 engineTarget = 15;
                 activeAirplane = true;
                 engineOn = true;
@@ -156,7 +156,7 @@ public class Glide : MonoBehaviour
             
             case 1 :
                 Modifier();
-                thrust = 600;
+                thrustMod = 600;
                 engineTarget = 15;
                 engineOn = true;
                 gear = "BOOST";

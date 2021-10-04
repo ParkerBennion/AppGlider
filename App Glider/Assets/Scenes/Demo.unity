@@ -833,6 +833,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 334318825}
     - target: {fileID: 926198075343759724, guid: 9ab1649bbca4d1e44ad054245d7ca1fb, type: 3}
+      propertyPath: CurrentStatus
+      value: 
+      objectReference: {fileID: 11400000, guid: 81378ae897f80ad48aed3005a0fa376a, type: 2}
+    - target: {fileID: 926198075343759724, guid: 9ab1649bbca4d1e44ad054245d7ca1fb, type: 3}
       propertyPath: getThatSexySOVariable
       value: 
       objectReference: {fileID: 11400000, guid: 81378ae897f80ad48aed3005a0fa376a, type: 2}
