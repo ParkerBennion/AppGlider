@@ -121,7 +121,7 @@ public class Glide : MonoBehaviour
         
         momentum = AccelTester.currStrength*-1;
     }
-
+//move these updates into coroutines
 
     public static void Modifier()
     {
