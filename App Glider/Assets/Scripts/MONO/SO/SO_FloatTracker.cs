@@ -4,7 +4,7 @@ using UnityEngine;
 public class SO_FloatTracker : ScriptableObject
 {
     public float baseNum;
-    public float baseNumTwo;
+    public int baseInt;
     //^^dont put in a second variable (at least in public) as the below functions only are dictating
     //to use the original variable.
 
@@ -18,6 +18,12 @@ public class SO_FloatTracker : ScriptableObject
     {
         baseNum *= multiNum;
     }
+
+    public void AddInt(int addNum)
+    {
+        baseInt += addNum;
+    }
+    // lets make a call here to make object process that the scene has changed.
     
     
 }

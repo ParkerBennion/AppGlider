@@ -12,8 +12,6 @@ public class Glide : MonoBehaviour
     public static Vector3 craftPos;
 
     public static Quaternion craftRot;
-    
-    public GameObject takeoffSprite;
 
     public GameObject vertSensor;
     public GameObject horoSensor;
@@ -37,19 +35,16 @@ public class Glide : MonoBehaviour
     public static int currentBoost;
     
     public static float engineDelta =2;
-    public static float engineDeltaMod;
     public static float engineDeltaTotal;
-    
     private static float engineTarget = 15;
-    public static float engingeTargetMod;
+    
     public static float engineTargetTotal;
     
-    // in progress.
-    public static float thrust = 0;
-    public static float thrustMod = 700;
     public static float thrustTotal;
-    // variables
-
+    
+    public static float engingeTargetMod;
+    public static float thrustMod;
+    public static float engineDeltaMod;
     
     public static bool isPlaying;
     private bool isFindingMomentum;
@@ -74,8 +69,10 @@ public class Glide : MonoBehaviour
         activeAirplane = true;
         isFindingMomentum = true;
         enginePower = 0;
+        thrustMod = CurrentStatus.thrust;
+        engingeTargetMod = CurrentStatus.soEngineTarget;
+        engineDeltaMod = CurrentStatus.soEngineDelta;
         momentum = 0;
-        thrust = CurrentStatus.thrust;
     }
     
     
@@ -88,6 +85,7 @@ public class Glide : MonoBehaviour
         horoSensor.SetActive(true);
         Boost();
         StartCoroutine(AirplaneActive());
+        Modifier();
         //sets the angle finding objects in the scene.
     }
     
@@ -125,7 +123,7 @@ public class Glide : MonoBehaviour
 
     public static void Modifier()
     {
-        thrustTotal = thrust + thrustMod;
+        thrustTotal = thrustMod;
         engineTargetTotal = engineTarget + engingeTargetMod;
         engineDeltaTotal = engineDelta + engineDeltaMod;
     }
@@ -138,7 +136,7 @@ public class Glide : MonoBehaviour
         switch (boostMode)
         {
             case -1 :
-                thrustMod = 0;
+                //thrustMod = 0;
                 engineTarget = 15;
                 engineOn = false;
                 gear = "OFF";
@@ -146,7 +144,7 @@ public class Glide : MonoBehaviour
                 break;
             
             case 0 :
-                thrustMod = 0;
+                //thrustMod = 0;
                 engineTarget = 15;
                 activeAirplane = true;
                 engineOn = true;
@@ -156,7 +154,7 @@ public class Glide : MonoBehaviour
             
             case 1 :
                 Modifier();
-                thrustMod = 600;
+                //thrustMod = 600;
                 engineTarget = 15;
                 engineOn = true;
                 gear = "BOOST";
