@@ -10,10 +10,15 @@ public class SO_PlaneStats : ScriptableObject
     public float soEngineTarget; //Max Speed
     public float soTurning;//Left Right moblity
     public int soCurrentBoost;
+    public int clampFloat = 20000;
     
     public void AddThrust(float addNum)
     {
-        thrust += addNum;
+        if (thrust >= 0 & thrust <= 1500)
+        {
+            thrust += addNum;
+        }
+        
     }
     public void AddDelta(float addNum)
     {
