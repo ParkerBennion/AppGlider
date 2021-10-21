@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52918d52b5c6eeb4e8758fbacb47e5f4, type: 3}
   m_Name: ModifiedPlaneStatus
   m_EditorClassIdentifier: 
-  thrust: 100
+  thrust: 500
   soEngineDelta: 5
   soGrav: 5
   soEngineTarget: 6
-  soTurning: 4
+  soTurning: 7
   soCurrentBoost: 0
   clampFloat: 20000

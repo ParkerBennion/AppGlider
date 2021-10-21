@@ -13,6 +13,14 @@ public class SliderUpdate : MonoBehaviour
     
     public SO_PlaneStats ModStats;
 
+    public void Start()
+    {
+        thrust.value = ModStats.thrust;
+        acceleration.value = ModStats.soEngineDelta;
+        topSpeed.value = ModStats.soEngineTarget;
+        turning.value = ModStats.soTurning;
+        lightness.value = ModStats.soGrav;
+    }
 
     public void RefreshStats()
     {

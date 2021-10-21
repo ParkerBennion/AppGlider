@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Learning.unity
-    guid: 54898868ca9611b42851caf4017143ae
+    path: Assets/Scenes/App Glider 2.unity
+    guid: b8fcbd99434244827b21e19ec694cef7
+  - enabled: 1
+    path: Assets/Scenes/Demo.unity
+    guid: 12c6f44bbd4eef541a925ea029b57f07
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/BuyingMenuScene.unity
+    guid: 07b973c07ac893e43847cc36b2c83607
   m_configObjects: {}
