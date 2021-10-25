@@ -195,6 +195,7 @@ public class Glide : MonoBehaviour
             {
                 power = 0;
             }
+
             yield return power;
         }
         //ENGINE POWER, ENGINE TARGET, ENGINE DELTA, MOMENTUM APPLIED, IS FINDING MOMENTUM.
