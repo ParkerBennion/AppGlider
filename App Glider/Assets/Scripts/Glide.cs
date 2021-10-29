@@ -100,12 +100,12 @@ public class Glide : MonoBehaviour
         Physics.gravity = new Vector3(0, -gravTotal, 0);
         // adds gravity dependant on the speed of craft.
         //this variable could be described as minimum speed to fly.
+        // this is not in coroutine as it should run when engine is off.
     }
     
     
     private void Update()
     {
-        //this might be "math"
         gravAngle = Mathf.Abs(vQuatFinder.verticalGoldenAngle * .08f);
         rotAngle = hQuatFinder.horozontalGoldenAngle * .2f;
         
@@ -118,6 +118,7 @@ public class Glide : MonoBehaviour
         // used as reference in other scripts that need the orientation of the player.
         
         momentum = AccelTester.currStrength*-1;
+        //Does this need to be in update or can it be multiplied by -1 in the momentum script?
     }
 
 
