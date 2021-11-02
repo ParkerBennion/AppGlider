@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Glide : MonoBehaviour
@@ -63,11 +64,15 @@ public class Glide : MonoBehaviour
         gliderBody = GetComponent<Rigidbody>();
         GetComponent<Rigidbody>().drag = .7f;
         GetComponent<Rigidbody>().angularDrag = 1;
+        
         currentBoost = 0;
+        
         isPlaying = true;
+        
         engineOn = true;
-        activeAirplane = true;
+        activeAirplane = false;
         isFindingMomentum = true;
+        
         enginePower = 0;
         thrustMod = CurrentStatus.thrust;
         engingeTargetMod = CurrentStatus.soEngineTarget;
@@ -79,12 +84,13 @@ public class Glide : MonoBehaviour
     private void Start()
     {
         StartCoroutine(FindVelocity());
+        
         StartCoroutine(FindMomentum());
-        //StartCoroutine(StartAccelerating());
+        
         vertSensor.SetActive(true);
         horoSensor.SetActive(true);
+        
         Boost();
-        StartCoroutine(AirplaneActive());
         Modifier();
         //sets the angle finding objects in the scene.
     }
@@ -131,39 +137,33 @@ public class Glide : MonoBehaviour
     //runs this equation to get the value of the thrust plus and buff or debuffs form the modifier.
     
     
-    private static void Boost()
+    
+    //  control over the flying state. this can be made into template for other gliders. also needs variables for ease of changing the numbers in case of status effects.
+    public static void Boost()
     {
         boostMode = currentBoost;
         switch (boostMode)
         {
-            case -1 :
-                //thrustMod = 0;
-                engineTarget = 15;
-                engineOn = false;
+            case 0 :
+                engineTarget = 0;
+                activeAirplane = false;
+                engineOn = true;
                 gear = "OFF";
                 Modifier();
+                Debug.Log("switch run enginge off");
                 break;
-            
-            case 0 :
-                //thrustMod = 0;
+
+            case 1 :
+                Modifier();
                 engineTarget = 15;
-                activeAirplane = true;
                 engineOn = true;
                 gear = "ON";
                 Modifier();
-                break;
-            
-            case 1 :
-                Modifier();
-                //thrustMod = 600;
-                engineTarget = 15;
-                engineOn = true;
-                gear = "BOOST";
-                Modifier();
+                Debug.Log("switch run enginge ON!!!!!!");
                 break;
         }
     }
-    //  control over the flying state. this can be made into template for other gliders. also needs variables for ease of changing the numbers in case of status effects.
+    //this could be set to a bool but is kept as a switch for ease of changing states later if i want
 
 
 
@@ -225,7 +225,13 @@ public class Glide : MonoBehaviour
         }
         //ACTIVE AIRPLANE
         // how agile the plane is and yaw control depending on pitch
-        
+    }
+
+    public void StartAirplaneActive()
+    {
+        currentBoost = 1;
+        activeAirplane = true;
+        StartCoroutine(AirplaneActive());
     }
 
 
@@ -241,43 +247,4 @@ public class Glide : MonoBehaviour
     }*/
     // this is the default state of the variables. need to make these variables fixed.
     
-    
-    void BoostUp()
-    {
-        //if (!activeAirplane && rollrights  >= .4f)
-        if (!activeAirplane)
-        {
-            activeAirplane = true;
-            engineOn = true;
-            currentBoost = 0;
-            StartCoroutine(AirplaneActive());
-            Boost();
-            
-        }
-        else if (currentBoost<1 && activeAirplane)
-        {
-            currentBoost++;
-        }
-    }
-    // switches between motor functions. delays and animations would be cool to add to these
-    
-    
-    void BoostActivate()
-    {
-        Boost();
-    }
-    // switches modes in the boost method.
-    
-    
-    void BoostDown()
-    {
-        if (currentBoost>-1)
-        {
-            currentBoost--; 
-        }
-    }
-    void BoostDownActivate()
-    {
-        Boost();
-    }
 }

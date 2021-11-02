@@ -496,7 +496,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: NAME HERE
+  m_Text: FLIE
 --- !u!222 &284184626
 CanvasRenderer:
   m_ObjectHideFlags: 0
