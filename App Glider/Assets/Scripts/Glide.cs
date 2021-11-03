@@ -234,6 +234,12 @@ public class Glide : MonoBehaviour
         StartCoroutine(AirplaneActive());
     }
 
+    public void StopAirplaneActive()
+    {
+        currentBoost = 0;
+        Boost();
+    }
+
 
     /*IEnumerator FullReset()
     {
