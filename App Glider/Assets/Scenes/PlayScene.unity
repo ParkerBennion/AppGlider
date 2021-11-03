@@ -336,8 +336,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 11400000, guid: da26d3c5e76ac2346adc4571b6734076, type: 2}
-          m_TargetAssemblyTypeName: SO_FloatTracker, Assembly-CSharp
+        - m_Target: {fileID: 11400000, guid: d75952d52a422324e8ac2bb095262e70, type: 2}
+          m_TargetAssemblyTypeName: SO_IntCaller, Assembly-CSharp
           m_MethodName: AddInt
           m_Mode: 3
           m_Arguments:
@@ -352,8 +352,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 11400000, guid: da26d3c5e76ac2346adc4571b6734076, type: 2}
-          m_TargetAssemblyTypeName: SO_FloatTracker, Assembly-CSharp
+        - m_Target: {fileID: 11400000, guid: d75952d52a422324e8ac2bb095262e70, type: 2}
+          m_TargetAssemblyTypeName: SO_IntCaller, Assembly-CSharp
           m_MethodName: AddInt
           m_Mode: 3
           m_Arguments:
@@ -402,8 +402,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 11400000, guid: da26d3c5e76ac2346adc4571b6734076, type: 2}
-          m_TargetAssemblyTypeName: SO_FloatTracker, Assembly-CSharp
+        - m_Target: {fileID: 11400000, guid: d75952d52a422324e8ac2bb095262e70, type: 2}
+          m_TargetAssemblyTypeName: SO_IntCaller, Assembly-CSharp
           m_MethodName: AddInt
           m_Mode: 3
           m_Arguments:
@@ -418,8 +418,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 11400000, guid: da26d3c5e76ac2346adc4571b6734076, type: 2}
-          m_TargetAssemblyTypeName: SO_FloatTracker, Assembly-CSharp
+        - m_Target: {fileID: 11400000, guid: d75952d52a422324e8ac2bb095262e70, type: 2}
+          m_TargetAssemblyTypeName: SO_IntCaller, Assembly-CSharp
           m_MethodName: AddInt
           m_Mode: 3
           m_Arguments:
