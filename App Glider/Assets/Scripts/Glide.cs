@@ -40,6 +40,9 @@ public class Glide : MonoBehaviour
     private static float engineTarget = 15;
     
     public static float engineTargetTotal;
+    public float currentFuel;
+    public float totalFuel;
+    public float emptyRate = 1;
     
     public static float thrustTotal;
     
@@ -74,7 +77,7 @@ public class Glide : MonoBehaviour
         isFindingMomentum = true;
         
         enginePower = 0;
-        thrustMod = CurrentStatus.thrust;
+        totalFuel = CurrentStatus.fuel;
         engingeTargetMod = CurrentStatus.soEngineTarget;
         engineDeltaMod = CurrentStatus.soEngineDelta;
         momentum = 0;
@@ -89,6 +92,8 @@ public class Glide : MonoBehaviour
         
         vertSensor.SetActive(true);
         horoSensor.SetActive(true);
+        
+        currentFuel = totalFuel;
         
         Boost();
         Modifier();
@@ -125,11 +130,14 @@ public class Glide : MonoBehaviour
         
         momentum = AccelTester.currStrength*-1;
         //Does this need to be in update or can it be multiplied by -1 in the momentum script?
+        
+        
     }
 
 
     public static void Modifier()
     {
+        
         thrustTotal = thrustMod;
         engineTargetTotal = engineTarget + engingeTargetMod;
         engineDeltaTotal = engineDelta + engineDeltaMod;
@@ -185,6 +193,7 @@ public class Glide : MonoBehaviour
     {
         while (isFindingMomentum)
         {
+            currentFuel = Mathf.MoveTowards(currentFuel, 0, emptyRate * Time.deltaTime);
             enginePower = Mathf.MoveTowards(enginePower, engineTargetTotal, engineDeltaTotal * Time.deltaTime);
 
             momentumApplied = Mathf.MoveTowards(momentumApplied, AccelTester.maxStrength*-1,
@@ -198,6 +207,7 @@ public class Glide : MonoBehaviour
             }
 
             yield return power;
+            yield return currentFuel;
         }
         //ENGINE POWER, ENGINE TARGET, ENGINE DELTA, MOMENTUM APPLIED, IS FINDING MOMENTUM.
         // total , max speed , acceleration (up and down), gravity adding speed.
@@ -222,7 +232,16 @@ public class Glide : MonoBehaviour
             transform.Rotate(Vector3.up * (rotAngle* Turning * Time.deltaTime)); //rotate (Yaw)
 
             yield return new WaitForFixedUpdate();
+            
+            if (currentFuel <= 0)
+            {
+                engineTargetTotal = 0;
+                Debug.Log("Out Of Fuel");
+            }
+            
         }
+
+        
         //ACTIVE AIRPLANE
         // how agile the plane is and yaw control depending on pitch
     }

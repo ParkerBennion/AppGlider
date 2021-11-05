@@ -7,7 +7,6 @@ public class SO_IntCaller : ScriptableObject
     public float baseNum;
     public int baseInt;
     public int limitInt;
-    public GameObject pauseMenu;
 
     public void Add(float addNum)
     {
@@ -36,13 +35,11 @@ public class SO_IntCaller : ScriptableObject
     public void StopTime()
     {
         Time.timeScale = 0f;
-        pauseMenu.SetActive(true);
     }
 
     public void StartTime()
     {
         Time.timeScale = 1f;
-        pauseMenu.SetActive(false);
     }
     
 

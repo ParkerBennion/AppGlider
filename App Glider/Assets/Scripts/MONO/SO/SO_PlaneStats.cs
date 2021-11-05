@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class SO_PlaneStats : ScriptableObject
 {
-    public float thrust;// temporary boost
+    public float fuel;// temporary boost
     public float soEngineDelta;// accel and decel
     public float soGrav; //"Plane Mass" literally how much gravity
     public float soEngineTarget; //Max Speed
@@ -14,9 +14,9 @@ public class SO_PlaneStats : ScriptableObject
     
     public void AddThrust(float addNum)
     {
-        if (thrust >= 0 & thrust <= 1500)
+        if (fuel >= 0 & fuel <= 1500)
         {
-            thrust += addNum;
+            fuel += addNum;
         }
         
     }
@@ -38,6 +38,6 @@ public class SO_PlaneStats : ScriptableObject
     }
     public void AddBoost(int addNum)
     {
-        thrust += addNum;
+        fuel += addNum;
     }
 }
