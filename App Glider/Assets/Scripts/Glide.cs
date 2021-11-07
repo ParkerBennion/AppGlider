@@ -208,6 +208,7 @@ public class Glide : MonoBehaviour
 
             yield return power;
             yield return currentFuel;
+            
         }
         //ENGINE POWER, ENGINE TARGET, ENGINE DELTA, MOMENTUM APPLIED, IS FINDING MOMENTUM.
         // total , max speed , acceleration (up and down), gravity adding speed.

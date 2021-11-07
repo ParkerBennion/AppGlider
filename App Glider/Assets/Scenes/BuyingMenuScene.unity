@@ -2275,7 +2275,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Thrust
+  m_Text: Fuel
 --- !u!222 &818760600
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2587,7 +2587,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Fuel
+  m_Text: none
 --- !u!222 &924376732
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3107,7 +3107,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 0926d708ef048f44282b2cb0240832e0, type: 2}
         m_TargetAssemblyTypeName: SO_PlaneStats, Assembly-CSharp
-        m_MethodName: AddThrust
+        m_MethodName: AddFuel
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3533,7 +3533,7 @@ GameObject:
   - component: {fileID: 1111804762}
   - component: {fileID: 1111804763}
   m_Layer: 5
-  m_Name: ThrustSlider
+  m_Name: FuelSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3609,7 +3609,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2034274258}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1500
+  m_MaxValue: 500
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -3891,7 +3891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c82e0c2019b9d49911f922f31b0221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: {fileID: 1111804763}
+  fuel: {fileID: 1111804763}
   acceleration: {fileID: 375013440}
   topSpeed: {fileID: 335213367}
   turning: {fileID: 21357623}
@@ -3991,7 +3991,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 0926d708ef048f44282b2cb0240832e0, type: 2}
         m_TargetAssemblyTypeName: SO_PlaneStats, Assembly-CSharp
-        m_MethodName: AddThrust
+        m_MethodName: AddFuel
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

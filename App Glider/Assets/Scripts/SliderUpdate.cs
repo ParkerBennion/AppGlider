@@ -3,7 +3,7 @@ using Slider = UnityEngine.UI.Slider;
 
 public class SliderUpdate : MonoBehaviour
 {
-    public Slider thrust;
+    public Slider fuel;
     public Slider acceleration;
     public Slider topSpeed;
     public Slider turning;
@@ -15,7 +15,7 @@ public class SliderUpdate : MonoBehaviour
 
     public void Start()
     {
-        thrust.value = ModStats.fuel;
+        fuel.value = ModStats.fuel;
         acceleration.value = ModStats.soEngineDelta;
         topSpeed.value = ModStats.soEngineTarget;
         turning.value = ModStats.soTurning;
@@ -24,7 +24,7 @@ public class SliderUpdate : MonoBehaviour
 
     public void RefreshStats()
     {
-        thrust.value = ModStats.fuel;
+        fuel.value = ModStats.fuel;
         acceleration.value = ModStats.soEngineDelta;
         topSpeed.value = ModStats.soEngineTarget;
         turning.value = ModStats.soTurning;

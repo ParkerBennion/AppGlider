@@ -4,40 +4,38 @@ using UnityEngine;
 [CreateAssetMenu]
 public class SO_PlaneStats : ScriptableObject
 {
-    public float fuel;// temporary boost
+    public float fuel;// Fuel Amount
     public float soEngineDelta;// accel and decel
     public float soGrav; //"Plane Mass" literally how much gravity
     public float soEngineTarget; //Max Speed
     public float soTurning;//Left Right moblity
-    public int soCurrentBoost;
-    public int clampFloat = 20000;
+
     
-    public void AddThrust(float addNum)
+    public void AddFuel(float addNum)
     {
-        if (fuel >= 0 & fuel <= 1500)
-        {
-            fuel += addNum;
-        }
-        
+        fuel += addNum;
+        fuel = Mathf.Clamp(fuel, 0, 500);
     }
     public void AddDelta(float addNum)
     {
         soEngineDelta += addNum;
-    }
-    public void AddGrav(float addNum)
-    {
-        soGrav += addNum;
+        soEngineDelta = Mathf.Clamp(soEngineDelta, 0, 10);
     }
     public void AddMaxSpeed(float addNum)
     {
         soEngineTarget += addNum;
+        soEngineTarget = Mathf.Clamp(soEngineTarget, 0, 10);
     }
     public void AddTurning(float addNum)
     {
         soTurning += addNum;
+        soTurning = Mathf.Clamp(soTurning, 0, 10);
     }
-    public void AddBoost(int addNum)
+    public void AddGrav(float addNum)
     {
-        fuel += addNum;
+        soGrav += addNum;
+        soGrav = Mathf.Clamp(soGrav, 0, 10);
     }
+    // to make script more versatile i could make min and max variables and plug them into each eqation making it editable 
+    // in the editor in place of writing it all here.
 }
