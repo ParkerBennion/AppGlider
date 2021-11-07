@@ -36,6 +36,13 @@ public class SO_PlaneStats : ScriptableObject
         soGrav += addNum;
         soGrav = Mathf.Clamp(soGrav, 0, 10);
     }
+    
+    
+   /* public void AddMaxSpeed(float addNum, float min, float max)
+    {
+        soEngineTarget += addNum;
+        soEngineTarget = Mathf.Clamp(soEngineTarget, min, max);
+    }*/ // why doesnt this work?
     // to make script more versatile i could make min and max variables and plug them into each eqation making it editable 
     // in the editor in place of writing it all here.
 }
