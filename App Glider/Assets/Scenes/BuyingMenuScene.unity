@@ -645,7 +645,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 0926d708ef048f44282b2cb0240832e0, type: 2}
         m_TargetAssemblyTypeName: SO_PlaneStats, Assembly-CSharp
-        m_MethodName: AddDelta
+        m_MethodName: MinDelta
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1842,7 +1842,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 0926d708ef048f44282b2cb0240832e0, type: 2}
         m_TargetAssemblyTypeName: SO_PlaneStats, Assembly-CSharp
-        m_MethodName: AddGrav
+        m_MethodName: MinGrav
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3107,7 +3107,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 0926d708ef048f44282b2cb0240832e0, type: 2}
         m_TargetAssemblyTypeName: SO_PlaneStats, Assembly-CSharp
-        m_MethodName: AddFuel
+        m_MethodName: MinFuel
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4009,18 +4009,6 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 940bc73bee19aef4a90e5268001119ee, type: 2}
-        m_TargetAssemblyTypeName: SO_FloatTracker, Assembly-CSharp
-        m_MethodName: AddInt
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: -100
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5312,7 +5300,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 0926d708ef048f44282b2cb0240832e0, type: 2}
         m_TargetAssemblyTypeName: SO_PlaneStats, Assembly-CSharp
-        m_MethodName: AddMaxSpeed
+        m_MethodName: MinMaxSpeed
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5683,7 +5671,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 0926d708ef048f44282b2cb0240832e0, type: 2}
         m_TargetAssemblyTypeName: SO_PlaneStats, Assembly-CSharp
-        m_MethodName: AddTurning
+        m_MethodName: MinTurning
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

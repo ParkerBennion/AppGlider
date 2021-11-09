@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Money
   m_EditorClassIdentifier: 
   baseNum: 0
-  baseInt: 1000
+  baseInt: 2

@@ -15,5 +15,6 @@ MonoBehaviour:
   fuel: 200
   soEngineDelta: 4
   soGrav: 5
-  soEngineTarget: 7
-  soTurning: 6
+  soEngineTarget: 8
+  soTurning: 3
+  money: {fileID: 11400000, guid: 940bc73bee19aef4a90e5268001119ee, type: 2}
