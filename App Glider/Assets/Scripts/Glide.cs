@@ -41,8 +41,8 @@ public class Glide : MonoBehaviour
     
     public static float engineTargetTotal;
     public float currentFuel;
-    public float totalFuel;
-    public float emptyRate = 1;
+    private float totalFuel;
+    public float emptyRate = 0;
     
     public static float thrustTotal;
     
@@ -54,7 +54,10 @@ public class Glide : MonoBehaviour
     private bool isFindingMomentum;
     public static bool engineOn;
     private static bool activeAirplane;
-    public float Turning = 2;
+    
+    public static float turning = 2;
+    private static float turningTotal;
+    public static float turningMod;
 
     public Button goButton;
     
@@ -78,6 +81,7 @@ public class Glide : MonoBehaviour
         
         enginePower = 0;
         totalFuel = CurrentStatus.fuel;
+        turningMod = CurrentStatus.soTurning;
         engingeTargetMod = CurrentStatus.soEngineTarget;
         engineDeltaMod = CurrentStatus.soEngineDelta;
         momentum = 0;
@@ -141,6 +145,7 @@ public class Glide : MonoBehaviour
         thrustTotal = thrustMod;
         engineTargetTotal = engineTarget + engingeTargetMod;
         engineDeltaTotal = engineDelta + engineDeltaMod;
+        turningTotal = turning + turningMod;
     }
     //runs this equation to get the value of the thrust plus and buff or debuffs form the modifier.
     
@@ -153,18 +158,12 @@ public class Glide : MonoBehaviour
         switch (boostMode)
         {
             case 0 :
-                engineTarget = 0;
-                activeAirplane = false;
-                engineOn = true;
+                engineTargetTotal = 0;
                 gear = "OFF";
-                Modifier();
                 Debug.Log("switch run enginge off");
                 break;
 
             case 1 :
-                Modifier();
-                engineTarget = 15;
-                engineOn = true;
                 gear = "ON";
                 Modifier();
                 Debug.Log("switch run enginge ON!!!!!!");
@@ -230,7 +229,7 @@ public class Glide : MonoBehaviour
             transform.Rotate(Vector3.left * (rollrights * 100 * Time.deltaTime)); //pitch left
             transform.Rotate(Vector3.forward * (rollrights * 70 * Time.deltaTime)); //lift
 
-            transform.Rotate(Vector3.up * (rotAngle* Turning * Time.deltaTime)); //rotate (Yaw)
+            transform.Rotate(Vector3.up * (rotAngle* turningTotal * Time.deltaTime)); //rotate (Yaw)
 
             yield return new WaitForFixedUpdate();
             
@@ -238,6 +237,13 @@ public class Glide : MonoBehaviour
             {
                 engineTargetTotal = 0;
                 Debug.Log("Out Of Fuel");
+            }
+            
+            if (currentFuel > 0 && currentBoost > 0)
+            {
+                Modifier();
+                Debug.Log("im a bug");
+                // i dont want this to run every fixed update.
             }
             
         }
@@ -250,6 +256,7 @@ public class Glide : MonoBehaviour
     public void StartAirplaneActive()
     {
         currentBoost = 1;
+        emptyRate = 1;
         activeAirplane = true;
         StartCoroutine(AirplaneActive());
     }
@@ -257,7 +264,14 @@ public class Glide : MonoBehaviour
     public void StopAirplaneActive()
     {
         currentBoost = 0;
+        emptyRate = 0;
         Boost();
+    }
+
+
+    public void addFuel()
+    {
+        currentFuel += 100;
     }
 
 
