@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -54,14 +55,17 @@ public class Glide : MonoBehaviour
     private bool isFindingMomentum;
     public static bool engineOn;
     private static bool activeAirplane;
-    
+
     public static float turning = 2;
     private static float turningTotal;
     public static float turningMod;
 
+    private bool firstStart = false;
+
     public Button goButton;
     
     // bool variables
+    //these are left public statics in case of use with debugging scripts.
     
     public static string gear = "none";
 
@@ -98,7 +102,7 @@ public class Glide : MonoBehaviour
         horoSensor.SetActive(true);
         
         currentFuel = totalFuel;
-        
+
         Boost();
         Modifier();
         //sets the angle finding objects in the scene.
@@ -116,9 +120,19 @@ public class Glide : MonoBehaviour
         // adds gravity dependant on the speed of craft.
         //this variable could be described as minimum speed to fly.
         // this is not in coroutine as it should run when engine is off.
+
+        
+        }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Finish"))
+        {
+            Debug.Log("you died");
+        }
     }
-    
-    
+
+
     private void Update()
     {
         gravAngle = Mathf.Abs(vQuatFinder.verticalGoldenAngle * .08f);
@@ -134,8 +148,7 @@ public class Glide : MonoBehaviour
         
         momentum = AccelTester.currStrength*-1;
         //Does this need to be in update or can it be multiplied by -1 in the momentum script?
-        
-        
+
     }
 
 
@@ -224,10 +237,10 @@ public class Glide : MonoBehaviour
             transform.Rotate(Time.deltaTime * 100 * Vector3.right);//constant dive
 
             transform.Rotate(Vector3.left * (rolllefts * 100 * Time.deltaTime));// pitch right
-            transform.Rotate(Vector3.back * (rolllefts * 70 * Time.deltaTime)); // lift
+            transform.Rotate(Vector3.forward * (rolllefts * 70 * Time.deltaTime)); // lift
         
             transform.Rotate(Vector3.left * (rollrights * 100 * Time.deltaTime)); //pitch left
-            transform.Rotate(Vector3.forward * (rollrights * 70 * Time.deltaTime)); //lift
+            transform.Rotate(Vector3.back * (rollrights * 70 * Time.deltaTime)); //lift
 
             transform.Rotate(Vector3.up * (rotAngle* turningTotal * Time.deltaTime)); //rotate (Yaw)
 
@@ -241,8 +254,7 @@ public class Glide : MonoBehaviour
             
             if (currentFuel > 0 && currentBoost > 0)
             {
-                Modifier();
-                Debug.Log("im a bug");
+                Equalizer();
                 // i dont want this to run every fixed update.
             }
             
@@ -253,12 +265,22 @@ public class Glide : MonoBehaviour
         // how agile the plane is and yaw control depending on pitch
     }
 
+    private void Equalizer()
+    {
+        Modifier();
+    }
+
     public void StartAirplaneActive()
     {
         currentBoost = 1;
         emptyRate = 1;
         activeAirplane = true;
-        StartCoroutine(AirplaneActive());
+        if (firstStart == false)
+        {
+            StartCoroutine(AirplaneActive());
+        }
+
+        firstStart = true;
     }
 
     public void StopAirplaneActive()
@@ -272,6 +294,13 @@ public class Glide : MonoBehaviour
     public void addFuel()
     {
         currentFuel += 100;
+    }
+
+    public void CheckStatus()
+    {
+        Debug.Log(thrustTotal + turningTotal + engineDeltaTotal + engineTargetTotal+"totals");
+        Debug.Log(thrustMod+turningMod+ engineDeltaMod + engingeTargetMod + "Mods");
+        Debug.Log(turning + engineDelta + engineTarget + thrustMod + "normals");
     }
 
 
