@@ -7,6 +7,8 @@ TagManager:
   - OB
   - KILL
   - USER
+  - MONEY
+  - FUEL
   layers:
   - Default
   - TransparentFX

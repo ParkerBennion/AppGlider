@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using Slider = UnityEngine.UI.Slider;
 
 public class SliderUpdate : MonoBehaviour
@@ -8,10 +9,12 @@ public class SliderUpdate : MonoBehaviour
     public Slider topSpeed;
     public Slider turning;
     public Slider lightness;
+    public Text parts;
 
     public Slider boost;
     
     public SO_PlaneStats ModStats;
+    public SO_FloatTracker money;
 
     public void Start()
     {
@@ -20,6 +23,7 @@ public class SliderUpdate : MonoBehaviour
         topSpeed.value = ModStats.soEngineTarget;
         turning.value = ModStats.soTurning;
         lightness.value = ModStats.soGrav;
+        parts.text = money.baseInt.ToString("");
     }
 
     public void RefreshStats()
@@ -29,6 +33,7 @@ public class SliderUpdate : MonoBehaviour
         topSpeed.value = ModStats.soEngineTarget;
         turning.value = ModStats.soTurning;
         lightness.value = ModStats.soGrav;
+        parts.text = money.baseInt.ToString("");
     }
     
 }

@@ -20,6 +20,7 @@ public class Glide : MonoBehaviour
     public GameObject horoSensor;
 
     public SO_PlaneStats CurrentStatus;
+    public SO_FloatTracker Money;
     
     public static float power = 13;
     public static float rollrights;
@@ -130,6 +131,25 @@ public class Glide : MonoBehaviour
         if (other.gameObject.CompareTag("Finish"))
         {
             Debug.Log("you died");
+        }
+
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("FUEL"))
+        {
+            currentFuel += 10;
+            Destroy(other.gameObject);
+            Debug.Log("fuel");
+        }
+
+        if (other.gameObject.CompareTag("MONEY"))
+        {
+            Money.baseInt += 1;
+            Destroy(other.gameObject);
+            Debug.Log("Money");
         }
     }
 
