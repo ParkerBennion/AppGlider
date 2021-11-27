@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52918d52b5c6eeb4e8758fbacb47e5f4, type: 3}
   m_Name: ModifiedPlaneStatus
   m_EditorClassIdentifier: 
-  fuel: 200
-  soEngineDelta: 4
+  fuel: 20
+  soEngineDelta: 5
   soGrav: 5
-  soEngineTarget: 8
+  soEngineTarget: 6
   soTurning: 3
   money: {fileID: 11400000, guid: 940bc73bee19aef4a90e5268001119ee, type: 2}

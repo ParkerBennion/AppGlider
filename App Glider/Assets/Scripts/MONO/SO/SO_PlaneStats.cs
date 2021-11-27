@@ -13,10 +13,10 @@ public class SO_PlaneStats : ScriptableObject
 
     public void AddFuel(float addNum)
     {
-        if (money.baseInt >= 1 && fuel < 500)
+        if (money.baseInt >= 1 && fuel < 50)
         {
             fuel += addNum;
-            fuel = Mathf.Clamp(fuel, 0, 500);
+            fuel = Mathf.Clamp(fuel, 0, 50);
             money.baseInt -= 1;
         }
         else

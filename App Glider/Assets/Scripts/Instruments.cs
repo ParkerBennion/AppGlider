@@ -19,8 +19,8 @@ public class Instruments : MonoBehaviour
     void Update()
     {
         speed.text = Glide.currentSpeed.ToString("MPH"+".0");
-        VertDegrees.text = vQuatFinder.verticalGoldenAngle.ToString(".0" + "  PITCH");
-        HoroDegrees.text = Mathf.Abs(hQuatFinder.horozontalGoldenAngle).ToString("0" + "  ROLL");
+        VertDegrees.text = vQuatFinder.verticalGoldenAngle.ToString("0");
+        HoroDegrees.text = Mathf.Abs(hQuatFinder.horozontalGoldenAngle).ToString("0");
 
         Glide.rolllefts = leftTrigger.value;
         Glide.rollrights = rightTrigger.value;

@@ -9,6 +9,7 @@ public class Glide : MonoBehaviour
    // deleted player condrolls!!!!!
     
     private Rigidbody gliderBody;
+    public Slider fuelSlider;
     
     public static Vector3 currentAngle;
     public static Vector3 craftPos;
@@ -148,6 +149,7 @@ public class Glide : MonoBehaviour
         
         momentum = AccelTester.currStrength*-1;
         //Does this need to be in update or can it be multiplied by -1 in the momentum script?
+        fuelSlider.value = currentFuel;
 
     }
 
