@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: CurrentScene
   m_EditorClassIdentifier: 
   baseNum: 0
-  baseInt: 1
+  baseInt: 0

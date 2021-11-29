@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Glide : MonoBehaviour
@@ -38,11 +36,11 @@ public class Glide : MonoBehaviour
     public static float momentumApplied;
     public static int currentBoost;
     
-    public static float engineDelta =2;
+    private static float engineDelta =2;
     public static float engineDeltaTotal;
     private static float engineTarget = 15;
     
-    public static float engineTargetTotal;
+    private static float engineTargetTotal;
     public float currentFuel;
     private float totalFuel;
     public float emptyRate = 0;
@@ -58,9 +56,9 @@ public class Glide : MonoBehaviour
     public static bool engineOn;
     private static bool activeAirplane;
 
-    public static float turning = 2;
+    private static float turning = 2;
     private static float turningTotal;
-    public static float turningMod;
+    private static float turningMod;
 
     private bool firstStart = false;
 
@@ -317,25 +315,4 @@ public class Glide : MonoBehaviour
     {
         currentFuel += 100;
     }
-
-    public void CheckStatus()
-    {
-        Debug.Log(thrustTotal + turningTotal + engineDeltaTotal + engineTargetTotal+"totals");
-        Debug.Log(thrustMod+turningMod+ engineDeltaMod + engingeTargetMod + "Mods");
-        Debug.Log(turning + engineDelta + engineTarget + thrustMod + "normals");
-    }
-
-
-    /*IEnumerator FullReset()
-    {
-        yield return new WaitForFixedUpdate();
-        activeAirplane = false;
-        engineOn = false;
-        engineTarget = 0;
-        engineDelta = 2;
-        currentBoost = -1;
-        StopCoroutine(AirplaneActive());
-    }*/
-    // this is the default state of the variables. need to make these variables fixed.
-    
 }
