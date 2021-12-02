@@ -2251,6 +2251,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 940bc73bee19aef4a90e5268001119ee, type: 2}
     - target: {fileID: 926198075343759724, guid: 9ab1649bbca4d1e44ad054245d7ca1fb, type: 3}
+      propertyPath: Pauser
+      value: 
+      objectReference: {fileID: 11400000, guid: d75952d52a422324e8ac2bb095262e70, type: 2}
+    - target: {fileID: 926198075343759724, guid: 9ab1649bbca4d1e44ad054245d7ca1fb, type: 3}
       propertyPath: goButton
       value: 
       objectReference: {fileID: 1196850273}
