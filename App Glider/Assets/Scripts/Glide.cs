@@ -51,6 +51,7 @@ public class Glide : MonoBehaviour
     public static float engingeTargetMod;
     public static float thrustMod;
     public static float engineDeltaMod;
+    public static float weightMod;
     
     public static bool isPlaying;
     private bool isFindingMomentum;
@@ -89,6 +90,7 @@ public class Glide : MonoBehaviour
         turningMod = CurrentStatus.soTurning;
         engingeTargetMod = CurrentStatus.soEngineTarget;
         engineDeltaMod = CurrentStatus.soEngineDelta;
+        weightMod = CurrentStatus.soGrav/2;
         momentum = 0;
     }
     
@@ -113,7 +115,7 @@ public class Glide : MonoBehaviour
     
     void FixedUpdate()
     {
-        gravTotal = grav - currentSpeed + gravAngle;
+        gravTotal = grav - currentSpeed + gravAngle - weightMod;
         if (gravTotal < 1)
         {
             gravTotal = 0;

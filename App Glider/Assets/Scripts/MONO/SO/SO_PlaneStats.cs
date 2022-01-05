@@ -65,10 +65,10 @@ public class SO_PlaneStats : ScriptableObject
     }
     public void AddGrav(float addNum)
     {
-        if (money.baseInt >= 1 && soGrav < 10)
+        if (money.baseInt >= 1 && soGrav > 0)
         {
             soGrav += addNum;
-            soGrav = Mathf.Clamp(soGrav, 0, 10);
+            soGrav = Mathf.Clamp(soGrav, 0, 5);
             money.baseInt -= 1;
         }
         else
@@ -140,10 +140,10 @@ public class SO_PlaneStats : ScriptableObject
     }
     public void MinGrav(float addNum)
     {
-        if (soGrav > 0)
+        if (soGrav < 5)
         {
             soGrav += addNum;
-            soGrav = Mathf.Clamp(soGrav, 0, 10);
+            soGrav = Mathf.Clamp(soGrav, 0, 5);
             money.baseInt += 1;
             Debug.Log("Refund");
         }
